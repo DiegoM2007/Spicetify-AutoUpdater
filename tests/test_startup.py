@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -97,7 +98,10 @@ class StartupTests(unittest.TestCase):
             self.assertEqual(result, startup / "Spicetify AutoUpdater.lnk")
             command = run.call_args.args[0]
             self.assertEqual(command[0], "powershell.exe")
-            self.assertIn(str(executable), command[-1])
+            self.assertIn(
+                os.path.normcase(str(executable.resolve())),
+                os.path.normcase(command[-1]),
+            )
             self.assertIn(str(result), command[-1])
 
 
