@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spicetify-autoupdater"
+version = "1.0.0"
+description = "A standalone Windows installer and launch-time updater for Spicetify"
+requires-python = ">=3.10"
+dependencies = ["PyQt6>=6.6"]
+
+[project.optional-dependencies]
+build = ["PyInstaller>=6.10"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
